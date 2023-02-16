@@ -1,49 +1,11 @@
 openapi: 3.0.0
 info:
-  title: java-rest-api
+  title: fhir-server-api
   version: 1.0.0
 servers:
   - url: localhost://
 paths:
-  /api/v1/products:
-    post:
-      tags:
-        - default
-      summary: create
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                id: 1
-                name: prodcut one
-                quantity: 20
-                price: 2000
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    put:
-      tags:
-        - default
-      summary: update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                id: 1
-                name: prodcut one
-                quantity: 50
-                price: 2000
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
+  /fhir/r4/Patient:
     get:
       tags:
         - default
@@ -53,17 +15,24 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/v1/products/1:
-    delete:
+  /fhir/r4/Patient/{patientId}:
+    get:
       tags:
         - default
-      summary: delete
+      summary: "Find patient by ID"
+      parameters:
+        - name: "patientId"
+          in: "path"
+          description: "ID of patient"
+          required: true
+          type: "integer"
+          format: "int64"
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /fhir/r4/Patient:
+  /fhir/r4/metadata:
     get:
       tags:
         - default
