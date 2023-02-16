@@ -63,3 +63,13 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /fhir/r4/Patient:
+    get:
+      tags:
+        - default
+      summary: get
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
