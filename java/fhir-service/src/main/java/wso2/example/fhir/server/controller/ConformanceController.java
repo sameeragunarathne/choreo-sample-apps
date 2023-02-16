@@ -19,7 +19,7 @@ public class ConformanceController {
         CapabilityStatement capabilityStatement = new CapabilityStatement();
         capabilityStatement.addFormat("json");
         capabilityStatement.addFormat("xml");
-        capabilityStatement.setFhirVersion(Enumerations.FHIRVersion._0_4_0);
+        capabilityStatement.setFhirVersion(Enumerations.FHIRVersion._4_0_1);
         capabilityStatement.setKind(CapabilityStatement.CapabilityStatementKind.INSTANCE);
         capabilityStatement.setName("Hapi FHIR Server");
         capabilityStatement.setStatus(Enumerations.PublicationStatus.DRAFT);
@@ -29,7 +29,7 @@ public class ConformanceController {
         CapabilityStatement.ResourceInteractionComponent searchInteraction = new CapabilityStatement.ResourceInteractionComponent();
         searchInteraction.setCode(CapabilityStatement.TypeRestfulInteraction.SEARCHTYPE);
         CapabilityStatement.ResourceInteractionComponent readInteraction = new CapabilityStatement.ResourceInteractionComponent();
-        searchInteraction.setCode(CapabilityStatement.TypeRestfulInteraction.READ);
+        readInteraction.setCode(CapabilityStatement.TypeRestfulInteraction.READ);
         rest.addResource().setType("Patient").setProfile("http://hl7.org/fhir/StructureDefinition/Patient")
                 .addInteraction(searchInteraction).addInteraction(readInteraction);
         capabilityStatement.addRest(rest);
